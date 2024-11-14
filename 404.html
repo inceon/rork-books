@@ -3,14 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>Rork Books</title>
-    <script>
-        var redirectTo = window.location.href.split('/rork-books')[1];
-        if (redirectTo) {
-          window.location.href = '/rork-books/#' + redirectTo;
-        } else {
-          window.location.href = '/rork-books/#/';
-        }
-      </script>
+    <script type="text/javascript">
+        var pathSegmentsToKeep = 1;
+
+        var l = window.location;
+        l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/#/' +
+            l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/') +
+            (l.search ? l.search : '') +
+            (l.hash ? l.hash : '')
+        );
+    </script>
 </head>
 <body>
     Redirecting...
