@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 addAccessTokenInterceptor();
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <HashRouter basename="/">
+        <HashRouter>
             <App/>
         </HashRouter>
         <ToastContainer/>

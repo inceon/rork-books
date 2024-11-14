@@ -34,6 +34,10 @@ export const App = () => {
             )
           }
         />
+        <Route
+          path="/test"
+          element={<div>test</div>}
+        />
       </Routes>
     </div>
   );
