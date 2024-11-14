@@ -1,0 +1,6 @@
+node_modules
+.idea
+dist
+liker.js
+example.json
+package-lock.json
