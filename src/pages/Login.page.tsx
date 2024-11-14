@@ -21,7 +21,9 @@ export const Login = () => {
         if (data.token) {
           Cookies.set("access_token", data.token);
           navigate('/');
-        }
+        } else {
+			throw new Error();
+		}
       })
       .catch(() => {
         toast.error("Login Error ⚠️", {
