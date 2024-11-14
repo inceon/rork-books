@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My books</title>
-  <script type="module" crossorigin src="/rork-books/assets/index-01adbfe9.js"></script>
-  <link rel="stylesheet" href="/rork-books/assets/index-b9f317c5.css">
+    <meta charset="utf-8">
+    <title>Rork Books</title>
+    <script>
+        var redirectTo = window.location.href.split('/rork-books')[1];
+        if (redirectTo) {
+          window.location.href = '/rork-books/#' + redirectTo;
+        } else {
+          window.location.href = '/rork-books/#/';
+        }
+      </script>
 </head>
 <body>
-<div id="root"></div>
-
+    Redirecting...
 </body>
 </html>
