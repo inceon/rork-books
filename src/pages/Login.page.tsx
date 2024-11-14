@@ -20,7 +20,7 @@ export const Login = () => {
           window.location.href = "/";
         }
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("Login Error ⚠️", {
           position: "top-right",
           autoClose: 5001,

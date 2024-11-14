@@ -3,7 +3,6 @@ import { Login } from './pages/Login.page';
 import { useAuth } from './hooks/useAuth';
 import style from './App.module.css';
 import Home from './pages/Home/Home.page';
-import Books from './pages/Books/Books.page';
 
 export const App = () => {
     const { isAuthenticated, isLoading } = useAuth();

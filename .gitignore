@@ -4,3 +4,4 @@ dist
 liker.js
 example.json
 package-lock.json
+tsconfig.tsbuildinfo
