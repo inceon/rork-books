@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import postcssPresetEnv from 'postcss-preset-env';
 import postcssFlexbugsFixes from 'postcss-flexbugs-fixes';
 
-
 export default defineConfig({
+    base: '/rork-books/',
     plugins: [react()],
     css: {
         modules: {
