@@ -2,12 +2,15 @@ import { Button, Flex, Form, Input } from "antd";
 import Cookies from "js-cookie";
 import { Bounce, toast } from "react-toastify";
 import { apiService } from "../services/apiService.ts";
+import { useNavigate } from "react-router-dom";
 
 type FieldType = {
   email?: string;
   password?: string;
 };
 export const Login = () => {
+  const navigate = useNavigate();
+  
   const onFinish = (values: FieldType) => {
     apiService
       .post("login/", {
@@ -17,7 +20,7 @@ export const Login = () => {
       .then((data: User) => {
         if (data.token) {
           Cookies.set("access_token", data.token);
-          window.location.href = "/";
+          navigate('/');
         }
       })
       .catch(() => {
