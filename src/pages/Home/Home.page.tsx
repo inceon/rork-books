@@ -12,6 +12,7 @@ function Home() {
     TITLE = "title",
     COMPLETED = "completed",
     AUTHOR = "author",
+    RATING = "rating",
   };
   const { user } = useAuth();
   const [snapshot, setSnapshot] = useState<Snapshot>();
@@ -34,6 +35,11 @@ function Home() {
       return order === "asc"
         ? aRes.localeCompare(bRes)
         : bRes.localeCompare(aRes);
+    },
+    [SortByEnum.RATING]: (a: Book, b: Book) => {
+      const aRes = Number(marafon?.find((m) => m.book_uid === a.uid)?.rating);
+      const bRes = Number(marafon?.find((m) => m.book_uid === b.uid)?.rating);
+      return order === "asc" ? aRes - bRes : bRes - aRes;
     },
     [SortByEnum.COMPLETED]: (a: Book, b: Book) => {
       const aRes = Number(
@@ -118,6 +124,8 @@ function Home() {
                   marafon?.find((m) => m.book_uid === bookData.uid)?.status ==
                   Status.READED
                 }
+                rating={marafon?.find((m) => m.book_uid === bookData.uid)
+                  ?.rating}
                 key={index}
               />
             );

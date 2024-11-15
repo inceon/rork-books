@@ -3,10 +3,11 @@ import style from "./Book.module.css";
 interface BookComponentProps {
 	src: string,
 	title?: string,
-	completed?: boolean
+	completed?: boolean,
+	rating?: string
 }
 
-function BookComponent({src, title, completed}: BookComponentProps) {
+function BookComponent({src, title, completed, rating}: BookComponentProps) {
 	return <div className={style.bookItems}>
 		<div className={style.mainBookWrap}>
 			<div className={style.bookCover}>
@@ -25,7 +26,9 @@ function BookComponent({src, title, completed}: BookComponentProps) {
 			</div>
 			{completed &&
 				<div className={style.completedMark}>
-					✅
+					<div className={style.rating}>
+						{rating}
+					</div>✅
 				</div>
 			}
 		</div>

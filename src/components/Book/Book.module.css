@@ -109,9 +109,23 @@
 	}
 
 .completed-mark {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2rem;
+	height: 2rem;
+
+	filter: drop-shadow(-2px 2px 2px #00000030);
+
 	position: absolute;
-	right: 1.2rem;
+	right: 2rem;
 	bottom: 1.2rem;
-	font-size: 1.2rem;
-	opacity: 0.8;
+	font-size: 1.4rem;
+
+	.rating {
+		border-radius: 10px 0 0 10px;
+		background: white;
+		font-size: 0.8rem;
+		padding: 0 5px 0 8px;
+	}
 }
