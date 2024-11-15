@@ -4,11 +4,12 @@ interface BookComponentProps {
 	src: string,
 	title?: string,
 	completed?: boolean,
-	rating?: string
+	rating?: string,
+	onClick?: () => void
 }
 
-function BookComponent({src, title, completed, rating}: BookComponentProps) {
-	return <div className={style.bookItems}>
+function BookComponent({src, title, completed, rating, onClick}: BookComponentProps) {
+	return <div className={style.bookItems} onClick={onClick}>
 		<div className={style.mainBookWrap}>
 			<div className={style.bookCover}>
 				<div className={style.bookInside}></div>

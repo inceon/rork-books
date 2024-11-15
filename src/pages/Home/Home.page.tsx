@@ -6,6 +6,7 @@ import BookComponent from "../../components/Book/Book.component";
 import { Snapshot, Marathon, Book, Status } from "../../types/snapshot";
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import { apiService } from "../../services/apiService";
+import BookModal from "../../components/BookModal/BookModal.component";
 
 function Home() {
   enum SortByEnum {
@@ -15,6 +16,8 @@ function Home() {
     RATING = "rating",
   };
   const { user } = useAuth();
+  const [selectedBook, setSelectedBook] = useState<Book>();
+  const [selectedBookModalOpen, setSelectedBookModalOpen] = useState(false);
   const [snapshot, setSnapshot] = useState<Snapshot>();
   const [marafon, setMarafon] = useState<Marathon[]>();
   const [sortBy, setSortBy] = useState<SortByEnum>(SortByEnum.COMPLETED);
@@ -137,10 +140,15 @@ function Home() {
                 rating={marafon?.find((m) => m.book_uid === bookData.uid)
                   ?.rating}
                 key={index}
+                onClick={() => {
+                  setSelectedBook(bookData);
+                  setSelectedBookModalOpen(true);
+                }}
               />
             );
           })}
       </div>
+      <BookModal isOpen={selectedBookModalOpen} setOpen={setSelectedBookModalOpen} selectedBook={selectedBook} />
     </>
   );
 }

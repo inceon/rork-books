@@ -133,3 +133,44 @@ export type Snapshot = {
   serverTime: number;
 };
 
+export type BookInfo = {
+  id: string;
+  title: string;
+  title_series: string;
+  short_description: string;
+  description: string;
+  author: string;
+  pages: string;
+  image: string;
+  image_ratio: string;
+  image_side: string;
+  image_back: string;
+  cover_color: string;
+  isbn: string | null;
+  isbn13: string;
+  published_date: string;
+  published_year: string;
+  publisher_name: string;
+  original_catalog_book_id: string;
+  search_rank: string;
+  gr_book_id: string;
+  gr_original_book_id: string | null;
+  gr_image_url: string;
+  gr_status: string;
+  gr_work_id: string;
+  language_id: string;
+  created_at_unix: string;
+  mark: string;
+  creator_user_id: string;
+  moderation_status: string;
+  creation_type: string;
+  cache_reviews_count: string;
+  cache_rating_average: string;
+  cache_rating_count: string;
+  cache_updated_unix: string;
+  is_draft: string;
+  isbn_proposal: string;
+  updated_at_unix: string;
+};
+
+
