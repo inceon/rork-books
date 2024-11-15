@@ -78,10 +78,14 @@ function Home() {
             value={sortBy}
             style={{ width: 150 }}
             onChange={(value) => setSortBy(value)}
-            options={Object.keys(SortByEnum).map((sort) => ({
-              value: SortByEnum[sort as keyof typeof SortByEnum],
-              label: sort.split("_").join(" "),
-            }))}
+            options={[{
+              label: <span>Sort by</span>,
+              title: 'Sort by',
+              options: Object.keys(SortByEnum).map((sort) => ({
+                value: SortByEnum[sort as keyof typeof SortByEnum],
+                label: sort.split("_").join(" "),
+              }))
+            }]}
           />
 
           <Button
@@ -96,10 +100,16 @@ function Home() {
             defaultValue=""
             value={filterBy}
             onChange={(value) => setFilterBy(value)}
-            options={Object.keys(Status).map((status) => ({
-              value: Status[status as keyof typeof Status],
-              label: status.split("_").join(" "),
-            }))}
+            options={
+              [{
+                label: <span>Filter by</span>,
+                title: 'Filter by',
+                options: Object.keys(Status).map((status) => ({
+                  value: Status[status as keyof typeof Status],
+                  label: status.split("_").join(" "),
+                }))
+              }]
+            }
           />
         </div>
       </div>
