@@ -53,7 +53,7 @@ function Home() {
   };
 
   useEffect(() => {
-    apiService.get('/rork/sync/snapshot?uiVersion=11.1')
+    apiService.get('/rork/sync/snapshot?uiVersion=11.8')
       .then(res => res.data)
       .then((data) => {
         setSnapshot(data);
