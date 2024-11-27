@@ -57,14 +57,8 @@ function Home() {
   };
 
   useEffect(() => {
-    // apiService.get('/rork/sync/snapshot?uiVersion=11.8')
-    //   .then(res => res.data)
-    //   .then((data) => {
-    //     setSnapshot(data);
-    //     setMarafon(data.data.marafon);
-    //   });[p]
-
-      fetch('/example.json').then(res => res.json())
+    apiService.get('/rork/sync/snapshot?uiVersion=11.8')
+      .then(res => res.data)
       .then((data) => {
         setSnapshot(data);
         setMarafon(data.data.marafon);
