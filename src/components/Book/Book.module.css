@@ -65,9 +65,10 @@
   .book-outside {
     position: absolute;
     width: var(--book-spine-width);
-    height: 104%;
-    top: -2%;
+    height: 103%;
+    top: -1.5%;
     left: 40px;
+	border-radius: 3px 0 0 3px;
     background: linear-gradient(
       90deg,
       rgb(46, 73, 56) 0%,
@@ -77,6 +78,8 @@
     );
     transition: var(--transition-default);
     transform: perspective(2000px) rotateY(0) translateX(0) scaleX(1);
+    box-shadow: -11px 0 11px -2px rgba(0, 0, 0, 0.5);
+
   }
 
   .book-image {
