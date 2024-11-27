@@ -3,6 +3,8 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 15px;
+  padding-right: 110px;
+  overflow-x: hidden;
 }
 
 .book-item {

@@ -1,131 +1,167 @@
+/* CSS Variables */
+:root {
+  --book-min-height: 290px;
+  --book-spine-width: 25px;
+  --book-padding: 16px;
+  --book-shadow: 6px 6px 12px -1px rgba(0, 0, 0, 0.1),
+    20px 14px 16px -6px rgba(0, 0, 0, 0.1);
+  --transition-default: all 0.3s ease-in-out;
+}
+
+/* Book Container */
 .book-items {
-	position: relative;
-	cursor: default;
-	width: 200px;
-	margin: 0;
-	display: grid;
-	break-inside: avoid;
-	}
+  position: relative;
+  cursor: default;
+  min-height: var(--book-min-height);
+  margin: 0;
+  display: grid;
+  break-inside: avoid;
+}
 
 .main-book-wrap {
-	position: relative;
-	padding: 16px;
-	display: flex;
-	align-items: end;
-	}
+  position: relative;
+  padding: 0 var(--book-padding);
+  display: flex;
+  align-items: end;
+}
 
+/* Book Cover and Structure */
 .book-cover {
-	position: relative;
-	width: 100%;
-	}
+  position: relative;
+  width: 100%;
+  z-index: 1;
 
-.book-cover .book-inside {
-	position: absolute;
-	width: 90%;
-	height: 97%;
-	top: 1%;
-	left: 12px;
-	border: 1px solid grey;
-	border-radius: 2px 6px 6px 2px;
-	background: white;
-	box-shadow: 10px 40px 40px -10px #00000030, inset -2px 0 0 grey,
-	inset -3px 0 0 #dbdbdb, inset -4px 0 0 white, inset -5px 0 0 #dbdbdb,
-	inset -6px 0 0 white, inset -7px 0 0 #dbdbdb, inset -8px 0 0 white,
-	inset -9px 0 0 #dbdbdb;
-	}
+  &:hover {
+    z-index: 2;
 
-.book-cover .book-image {
-	line-height: 0;
-	position: relative;
-	border-radius: 2px 6px 6px 2px;
-	box-shadow: 6px 6px 18px -2px rgba(0, 0, 0, 0.2),
-	24px 28px 40px -6px rgba(0, 0, 0, 0.1);
-	transition: all 0.3s ease-in-out;
-	transform: perspective(2000px) rotateY(-15deg) translateX(-10px) scaleX(0.94);
-	cursor: pointer;
-	}
+    .book-outside {
+      transform: perspective(2000px) translateX(-40px) rotateY(-88.9deg);
+      left: 25px;
+      transform-style: preserve-3d;
+    }
 
-.book-image img, .book-image .temp-image {
-	width: 100%;
-	background-color: #ecf1ee;
-	min-width: 160px;
-	min-height: 250px;
-	text-align: center;
-	border-radius: 2px 6px 6px 2px;
-	}
+    .book-image {
+      transform: perspective(2000px) rotateY(0deg) translateX(0px) scale(1.1) !important;
+      transform-style: preserve-3d;
+      box-shadow: var(--book-shadow);
+    }
+  }
 
-.book-image .temp-image {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: "Nunito", sans-serif;
-	font-size: 1.5rem;
-	text-wrap: wrap;
-	line-height: 2rem;
-	}
+  .book-inside {
+    position: absolute;
+    width: 90%;
+    height: 97%;
+    top: 1%;
+    left: 12px;
+    border: 1px solid grey;
+    border-radius: 2px 6px 6px 2px;
+    background: white;
+    box-shadow: 10px 40px 40px -10px #00000030, inset -2px 0 0 grey,
+      inset -3px 0 0 #dbdbdb, inset -4px 0 0 white, inset -5px 0 0 #dbdbdb,
+      inset -6px 0 0 white, inset -7px 0 0 #dbdbdb, inset -8px 0 0 white,
+      inset -9px 0 0 #dbdbdb;
+  }
 
-.book-image:hover {
-	transform: perspective(2000px) rotateY(0deg) translateX(0px) scaleX(1);
-	transform-style: preserve-3d;
-	box-shadow: 6px 6px 12px -1px rgba(0, 0, 0, 0.1),
-	20px 14px 16px -6px rgba(0, 0, 0, 0.1);
-	}
+  .book-outside {
+    position: absolute;
+    width: var(--book-spine-width);
+    height: 104%;
+    top: -2%;
+    left: 40px;
+    background: linear-gradient(
+      90deg,
+      rgb(46, 73, 56) 0%,
+      rgb(99, 26, 26) 20%,
+      rgb(99, 26, 26) 80%,
+      rgb(11, 73, 33) 100%
+    );
+    transition: var(--transition-default);
+    transform: perspective(2000px) rotateY(0) translateX(0) scaleX(1);
+  }
 
-.effect {
-	position: absolute;
-	width: 20px;
-	height: 100%;
-	margin-left: 8px;
-	top: 0;
-	border-left: 2px solid #00000010;
-	background-image: linear-gradient(
-			90deg,
-			rgba(255, 255, 255, 0.2) 0%,
-			rgba(255, 255, 255, 0) 100%
-	);
-	transition: all 0.5s ease;
-	z-index: 5;
-	}
+  .book-image {
+    line-height: 0;
+    position: relative;
+    border-radius: 2px 6px 6px 2px;
+    box-shadow: 6px 6px 18px -2px rgba(0, 0, 0, 0.2),
+      24px 28px 40px -6px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-default);
+    transform: perspective(2000px) rotateY(75deg) translateX(10px) scaleX(0.94);
+    cursor: pointer;
 
-.light {
-	width: 90%;
-	height: 100%;
-	position: absolute;
-	border-radius: 3px;
-	background-image: linear-gradient(
-			90deg,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(255, 255, 255, 0.2) 100%
-	);
-	top: 0;
-	right: 0;
-	opacity: 0.1;
-	transition: all 0.5s ease;
-	z-index: 4;
-	}
+    img,
+    .temp-image {
+      width: 100%;
+      background-color: #ecf1ee;
+      min-width: 160px;
+      min-height: 250px;
+      text-align: center;
+      border-radius: 2px 6px 6px 2px;
+    }
 
-.book-image:hover .effect {
-	margin-left: 6px;
-	}
+    .temp-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Nunito", sans-serif;
+      font-size: 1.5rem;
+      text-wrap: wrap;
+      line-height: 2rem;
+    }
+
+    .effect {
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      margin-left: 8px;
+      top: 0;
+      border-left: 2px solid #00000010;
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transition: all 0.5s ease;
+      z-index: 5;
+    }
+
+    .light {
+      width: 90%;
+      height: 100%;
+      position: absolute;
+      border-radius: 3px;
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+      );
+      top: 0;
+      right: 0;
+      opacity: 0.1;
+      transition: all 0.5s ease;
+      z-index: 4;
+    }
+  }
+}
 
 .completed-mark {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 2rem;
-	height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
 
-	filter: drop-shadow(-2px 2px 2px #00000030);
+  filter: drop-shadow(-2px 2px 2px #00000030);
 
-	position: absolute;
-	right: 2rem;
-	bottom: 1.2rem;
-	font-size: 1.4rem;
+  position: absolute;
+  right: 2rem;
+  bottom: 1.2rem;
+  font-size: 1.4rem;
 
-	.rating {
-		border-radius: 10px 0 0 10px;
-		background: white;
-		font-size: 0.8rem;
-		padding: 0 5px 0 8px;
-	}
+  .rating {
+    border-radius: 10px 0 0 10px;
+    background: white;
+    font-size: 0.8rem;
+    padding: 0 5px 0 8px;
+  }
 }

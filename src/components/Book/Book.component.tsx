@@ -5,15 +5,20 @@ interface BookComponentProps {
 	title?: string,
 	completed?: boolean,
 	rating?: string,
-	onClick?: () => void
+	onClick?: () => void,
+	side?: "right" | "left"
 }
 
-function BookComponent({src, title, completed, rating, onClick}: BookComponentProps) {
-	return <div className={style.bookItems} onClick={onClick}>
+function BookComponent({src, title, completed, rating, onClick, side}: BookComponentProps) {
+	return <div className={style.bookItems} onClick={onClick} style={{
+		width: side === "right" ? "200px" : "60px"
+	}}>
 		<div className={style.mainBookWrap}>
 			<div className={style.bookCover}>
-				<div className={style.bookInside}></div>
-				<div className={style.bookImage}>
+				{side === "right" && <div className={style.bookInside}></div>}
+				<div className={style.bookImage} style={{
+					transform: side === "right" ? "perspective(2000px) rotateY(-15deg) translateX(-10px) scaleX(0.94)" : "perspective(2000px) rotateY(75deg) translateX(10px) scaleX(0.94)",
+				}}>
 					{
 						src ?
 						<img src={src} alt={title}/> :
@@ -24,6 +29,7 @@ function BookComponent({src, title, completed, rating, onClick}: BookComponentPr
 					<div className={style.effect}></div>
 					<div className={style.light}></div>
 				</div>
+				{side === "left" && <div className={style.bookOutside}></div>}
 			</div>
 			{completed &&
 				<div className={style.completedMark}>

@@ -1,4 +1,4 @@
-import { Avatar, Button, Select } from "antd";
+import { Avatar, Button, Select, Switch } from "antd";
 import { useAuth } from "../../hooks/useAuth";
 import style from "./Home.module.css";
 import { useState, useEffect } from "react";
@@ -17,6 +17,7 @@ function Home() {
   };
   const { user } = useAuth();
   const [selectedBook, setSelectedBook] = useState<Book>();
+  const [side, setSide] = useState<"left" | "right">("left");
   const [selectedBookModalOpen, setSelectedBookModalOpen] = useState(false);
   const [snapshot, setSnapshot] = useState<Snapshot>();
   const [marafon, setMarafon] = useState<Marathon[]>();
@@ -56,8 +57,14 @@ function Home() {
   };
 
   useEffect(() => {
-    apiService.get('/rork/sync/snapshot?uiVersion=11.8')
-      .then(res => res.data)
+    // apiService.get('/rork/sync/snapshot?uiVersion=11.8')
+    //   .then(res => res.data)
+    //   .then((data) => {
+    //     setSnapshot(data);
+    //     setMarafon(data.data.marafon);
+    //   });[p]
+
+      fetch('/example.json').then(res => res.json())
       .then((data) => {
         setSnapshot(data);
         setMarafon(data.data.marafon);
@@ -76,6 +83,13 @@ function Home() {
           </div>
           
         <div className={style.sortArea}>
+          <Switch
+            checked={side === "right"}
+            onChange={(checked) => setSide(checked ? "right" : "left")}
+            checkedChildren="Right"
+            unCheckedChildren="Left"
+          />
+
           <Select 
             placeholder="Sort by"
             value={sortBy}
@@ -144,6 +158,7 @@ function Home() {
                   setSelectedBook(bookData);
                   setSelectedBookModalOpen(true);
                 }}
+                side={side}
               />
             );
           })}
